@@ -1,0 +1,33 @@
+package com.example.ltc20;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.viewpager.widget.PagerAdapter;
+
+public class ImageAdapterltc4_3_4 extends PagerAdapter {
+
+    private Context mContext;
+    private int[] mImageIds = new int[]{R.drawable.ltc4340 ,R.drawable.ltc43401 ,R.drawable.ltc43402 ,R.drawable.ltc43403 ,R.drawable.ltc43404 ,R.drawable.ltc43405 ,R.drawable.ltc43406 ,R.drawable.ltc43407 };
+    ImageAdapterltc4_3_4(Context context) { mContext = context; }
+    @Override
+    public int getCount() { return mImageIds.length; }
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        ImageView imageView = new ImageView(mContext);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setImageResource(mImageIds[position]);
+        container.addView(imageView, 0);
+        return imageView;
+    }
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((ImageView) object);
+    }
+}
